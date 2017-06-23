@@ -4,10 +4,16 @@ import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import ButtonMenu from './Components/ButtonMenu';
+import CheckBox from './Components/CheckBox';
 injectTapEventPlugin();
 import './App.css';
 
 class App extends Component {
+
+  changeMessage(type){
+    this.setState({displayedMessage: this.state.messages[type]});
+  }
+
   render() {
     return (
       <div className="App">
@@ -26,9 +32,14 @@ class App extends Component {
                 <hr />
 
                 <Row className="show-grid">
-                  <Col xs={12} md={8}>
+                  <Col xs={12} md={6}>
                     <h4>Division Algorithms for Goods</h4>
-                    <p> Some Text </p>
+                    <p> The rent calculator helps roomates to fairly share rent
+                    when moving into a new house or apartment. This is
+                    especially useful when bedrooms differ in size, closet
+                    space, bathrooms, and more. </p>
+                  </Col>
+                  <Col xs={6} md={2}>
                   </Col>
                   <Col xs={6} md={4}>
                   </Col>
@@ -37,18 +48,13 @@ class App extends Component {
                 <Row className="show-grid">
                   <Col xs={12} md={6}>
                     <h4>Fairness Properties</h4>
-                    <p> Some Text </p>
-                    <ButtonMenu label={"Utility"}/>
-                    <br/>
-                    <ButtonMenu label={"Utilitarian"}/>
-                    <br/>
-                    <ButtonMenu label={"Maximin"}/>
-                    <br/>
-                    <ButtonMenu label={"Envy-Freeness"}/>
+                    <p> See how it works </p>
+                    <ButtonMenu />
                   </Col>
                   <Col xs={6} md={6}>
                     <h4>Results</h4>
-                    <p> Some Text </p>
+                    <p> To adjust results, click on the preference buttons </p>
+
                     <Grid>
                       <Row>
                         <Col xs={6} md={2}>
@@ -64,110 +70,129 @@ class App extends Component {
                         Claire Preferences
                         </Col>
                         <Col xs={6} md={1}>
-
                         </Col>
                       </Row>
+
                       <hr/>
-                      <Row>
-                        <Col xs={6} md={2}>
-                        Item 1
-                        </Col>
-                        <Col xs={6} md={1}>
-                        <ButtonMenu label={"123"}/>
-                        </Col>
-                        <Col xs={6} md={1}>
-                        <ButtonMenu label={"234"}/>
-                        </Col>
-                        <Col xs={6} md={1}>
-                        <ButtonMenu label={"523"}/>
-                        </Col>
-                        <Col xs={6} md={1}>
 
-                        </Col>
-                      </Row>
                       <Row>
                         <Col xs={6} md={2}>
-                        a
+                        Gold Ring
                         </Col>
                         <Col xs={6} md={1}>
-                        b
+                        <CheckBox label={"123"}/>
                         </Col>
                         <Col xs={6} md={1}>
-                        c
+                        <CheckBox label={"234"}/>
                         </Col>
                         <Col xs={6} md={1}>
-                        e
+                        <CheckBox label={"523"}/>
                         </Col>
                         <Col xs={6} md={1}>
+                        </Col>
+                      </Row>
 
-                        </Col>
-                      </Row>
                       <Row>
                         <Col xs={6} md={2}>
-                        a
+                        Diamond Ring
                         </Col>
                         <Col xs={6} md={1}>
-                        b
+                        <CheckBox label={"123"}/>
                         </Col>
                         <Col xs={6} md={1}>
-                        c
+                        <CheckBox label={"234"}/>
                         </Col>
                         <Col xs={6} md={1}>
-                        e
+                        <CheckBox label={"523"}/>
                         </Col>
                         <Col xs={6} md={1}>
+                        </Col>
+                      </Row>
 
-                        </Col>
-                      </Row>
                       <Row>
                         <Col xs={6} md={2}>
-                        a
+                        Pearl Necklace
                         </Col>
                         <Col xs={6} md={1}>
-                        b
+                        <CheckBox label={"123"}/>
                         </Col>
                         <Col xs={6} md={1}>
-                        c
+                        <CheckBox label={"234"}/>
                         </Col>
                         <Col xs={6} md={1}>
-                        e
+                        <CheckBox label={"523"}/>
                         </Col>
                         <Col xs={6} md={1}>
+                        </Col>
+                      </Row>
 
-                        </Col>
-                      </Row>
                       <Row>
                         <Col xs={6} md={2}>
-                        a
+                        Ruby Earring
                         </Col>
                         <Col xs={6} md={1}>
-                        b
+                        <CheckBox label={"123"}/>
                         </Col>
                         <Col xs={6} md={1}>
-                        c
+                        <CheckBox label={"234"}/>
                         </Col>
                         <Col xs={6} md={1}>
-                        e
+                        <CheckBox label={"523"}/>
                         </Col>
                         <Col xs={6} md={1}>
-                        
                         </Col>
                       </Row>
+
+                      <Row>
+                        <Col xs={6} md={2}>
+                        Gold Watch
+                        </Col>
+                        <Col xs={6} md={1}>
+                        <CheckBox label={"123"}/>
+                        </Col>
+                        <Col xs={6} md={1}>
+                        <CheckBox label={"234"}/>
+                        </Col>
+                        <Col xs={6} md={1}>
+                        <CheckBox label={"523"}/>
+                        </Col>
+                        <Col xs={6} md={1}>
+                        </Col>
+                      </Row>
+
+                      <Row>
+                        <Col xs={6} md={2}>
+                        Silver Bracelet
+                        </Col>
+                        <Col xs={6} md={1}>
+                        <CheckBox label={"123"}/>
+                        </Col>
+                        <Col xs={6} md={1}>
+                        <CheckBox label={"234"}/>
+                        </Col>
+                        <Col xs={6} md={1}>
+                        <CheckBox label={"523"}/>
+                        </Col>
+                        <Col xs={6} md={1}>
+                        </Col>
+                      </Row>
+
                     </Grid>
                   </Col>
                 </Row>
 
                 <Row className="show-grid">
-                  <Col xs={6} md={2}>
+                  <Col xs={6} md={6}>
+                    <h1>Expanded View</h1>
+                    <p>Some Text</p>
                   </Col>
 
-                  <Col xs={6} md={5}>
-                  </Col>
-
-                  <Col xs={6} md={5}>
+                  <Col xs={6} md={6}>
                   </Col>
                 </Row>
+
                 <br/>
+
                 <Row className="show-grid">
                   <Col xs={6} md={2}>
                   </Col>
@@ -178,6 +203,19 @@ class App extends Component {
                   <Col xs={6} md={5}>
                   </Col>
                 </Row>
+
+                <Row className="show-grid">
+                  <Col xs={6} md={2}>
+                  </Col>
+
+                  <Col xs={6} md={5}>
+                  </Col>
+
+                  <Col xs={6} md={5}>
+                  </Col>
+                </Row>
+
+
           </Grid>
       </div>
     );
