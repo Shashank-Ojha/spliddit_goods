@@ -14,8 +14,6 @@ class CheckBox extends Component {
     var changeActive = (function(event){
       this.setState({isActive: !this.state.isActive});
     });
-    console.log("clicked");
-    console.log(this.state.isActive);
     return changeActive;
   }
 
@@ -38,6 +36,7 @@ class CheckBox extends Component {
           onTouchTap={this.changeActiveState().bind(this)}
           label={this.props.label}
           style={style}
+          fullWidth = {true}
         />
       </MuiThemeProvider>
     );

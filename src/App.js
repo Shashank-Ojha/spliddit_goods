@@ -57,131 +57,124 @@ class App extends Component {
 
                     <Grid>
                       <Row>
-                        <Col xs={6} md={2}>
+                        <Col xs={6} md={1}>
                           Items
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           Alices Preferences
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           Bob Preferences
                         </Col>
-                          <Col xs={6} md={1}>
+                          <Col xs={6} md={2}>
                           Claire Preferences
                         </Col>
-                        <Col xs={6} md={1}>
-                        </Col>
+
                       </Row>
 
                       <hr/>
 
                       <Row>
-                        <Col xs={6} md={2}>
+                        <Col xs={6} md={1}>
                           Gold Ring
                         </Col>
-                        <Col xs={6} md={1}>
-
+                        <Col xs={6} md={2}>
                           <div style={{border: '1px solid grey'}}>
                             <CheckBox label={"123"}/>
                           </div>
+
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <CheckBox label={"234"}/>
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <CheckBox label={"523"}/>
                         </Col>
-                        <Col xs={6} md={1}>
-                        </Col>
+
                       </Row>
 
                       <Row>
-                        <Col xs={6} md={2}>
+                        <Col xs={6} md={1}>
                           Diamond Ring
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <CheckBox label={"123"}/>
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <div style={{border: '1px solid grey'}}>
                             <CheckBox label={"456"}/>
                           </div>
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <CheckBox label={"523"}/>
                         </Col>
-                        <Col xs={6} md={1}>
-                        </Col>
+
                       </Row>
 
                       <Row>
-                        <Col xs={6} md={2}>
+                        <Col xs={6} md={1}>
                           Pearl Necklace
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <CheckBox label={"123"}/>
                         </Col>
-                          <Col xs={6} md={1}>
+                          <Col xs={6} md={2}>
                           <CheckBox label={"234"}/>
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <div style={{border: '1px solid grey'}}>
                             <CheckBox label={"789"}/>
                           </div>
                         </Col>
-                        <Col xs={6} md={1}>
-                        </Col>
+
                       </Row>
 
                       <Row>
-                        <Col xs={6} md={2}>
+                        <Col xs={6} md={1}>
                           Ruby Earring
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <CheckBox label={"123"}/>
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <CheckBox label={"234"}/>
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <CheckBox label={"523"}/>
                         </Col>
-                        <Col xs={6} md={1}>
-                        </Col>
+
                       </Row>
 
                       <Row>
-                        <Col xs={6} md={2}>
+                        <Col xs={6} md={1}>
                           Gold Watch
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <CheckBox label={"123"}/>
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <CheckBox label={"234"}/>
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <CheckBox label={"523"}/>
                         </Col>
-                        <Col xs={6} md={1}>
-                        </Col>
+
                       </Row>
 
                       <Row>
-                        <Col xs={6} md={2}>
+                        <Col xs={6} md={1}>
                           Silver Bracelet
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <CheckBox label={"123"}/>
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <CheckBox label={"234"}/>
                         </Col>
-                        <Col xs={6} md={1}>
+                        <Col xs={6} md={2}>
                           <CheckBox label={"523"}/>
                         </Col>
-                        <Col xs={6} md={1}>
-                        </Col>
+                      
                       </Row>
 
                     </Grid>
