@@ -2,23 +2,25 @@ import React, { Component } from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-class ButtonMenu extends Component {
+class CheckBox extends Component {
   constructor(props) {
     super();
     this.state = {
-      activeButton: "Utilitarian"
+      isActive: false
     };
   }
 
-  makeFunction(name) {
+  changeActiveState(){
     var changeActive = (function(event){
-      this.setState({activeButton: name});
+      this.setState({isActive: !this.state.isActive});
     });
+    console.log("clicked");
+    console.log(this.state.isActive);
     return changeActive;
   }
 
-  decideBGColor(name){
-    if(name === this.state.activeButton)
+  decideBGColor(){
+    if (this.state.isActive)
       return "#a4c639";
     return ""
   }
@@ -31,9 +33,9 @@ class ButtonMenu extends Component {
     return(
       <MuiThemeProvider>
         <FlatButton
-          backgroundColor={this.decideBGColor(this.props.label)}
-          hoverColor="#8AA62F"
-          onTouchTap={this.makeFunction(this.props.label).bind(this)}
+          backgroundColor={this.decideBGColor()}
+          hoverColor={this.decideBGColor()}
+          onTouchTap={this.changeActiveState().bind(this)}
           label={this.props.label}
           style={style}
         />
@@ -42,4 +44,4 @@ class ButtonMenu extends Component {
   }
 }
 
-export default ButtonMenu;
+export default CheckBox;
