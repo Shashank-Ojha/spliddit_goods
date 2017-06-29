@@ -55,6 +55,7 @@ class App extends Component {
                     <h4>Results</h4>
                     <p> To adjust results, click on the preference buttons </p>
 
+
                     <Grid>
                       <Row>
                         <Col xs={6} md={1}>
@@ -69,117 +70,73 @@ class App extends Component {
                           <Col xs={6} md={2}>
                           Claire Preferences
                         </Col>
-
                       </Row>
 
                       <hr/>
+
 
                       <Row>
                         <Col xs={6} md={1}>
                           Gold Ring
                         </Col>
-                        <Col xs={6} md={2}>
-                          <div style={{border: '1px solid grey'}}>
-                            <CheckBox label={"123"}/>
-                          </div>
 
+                        <Col xs={6} md={5}>
+                          <CheckBox label={"$123"} assignment={2}/>
                         </Col>
-                        <Col xs={6} md={2}>
-                          <CheckBox label={"234"}/>
-                        </Col>
-                        <Col xs={6} md={2}>
-                          <CheckBox label={"523"}/>
-                        </Col>
-
                       </Row>
+
 
                       <Row>
                         <Col xs={6} md={1}>
                           Diamond Ring
                         </Col>
-                        <Col xs={6} md={2}>
-                          <CheckBox label={"123"}/>
+                        <Col xs={6} md={5}>
+                          <CheckBox label={"$123"} assignment={3}/>
                         </Col>
-                        <Col xs={6} md={2}>
-                          <div style={{border: '1px solid grey'}}>
-                            <CheckBox label={"456"}/>
-                          </div>
-                        </Col>
-                        <Col xs={6} md={2}>
-                          <CheckBox label={"523"}/>
-                        </Col>
-
                       </Row>
 
                       <Row>
                         <Col xs={6} md={1}>
                           Pearl Necklace
                         </Col>
-                        <Col xs={6} md={2}>
-                          <CheckBox label={"123"}/>
+                        <Col xs={6} md={5}>
+                          <CheckBox label={"$123"} assignment={1}/>
                         </Col>
-                          <Col xs={6} md={2}>
-                          <CheckBox label={"234"}/>
-                        </Col>
-                        <Col xs={6} md={2}>
-                          <div style={{border: '1px solid grey'}}>
-                            <CheckBox label={"789"}/>
-                          </div>
-                        </Col>
-
                       </Row>
 
                       <Row>
                         <Col xs={6} md={1}>
                           Ruby Earring
                         </Col>
-                        <Col xs={6} md={2}>
-                          <CheckBox label={"123"}/>
+                        <Col xs={6} md={5}>
+                          <CheckBox label={"$123"} assignment={2}/>
                         </Col>
-                        <Col xs={6} md={2}>
-                          <CheckBox label={"234"}/>
-                        </Col>
-                        <Col xs={6} md={2}>
-                          <CheckBox label={"523"}/>
-                        </Col>
-
                       </Row>
 
                       <Row>
                         <Col xs={6} md={1}>
                           Gold Watch
                         </Col>
-                        <Col xs={6} md={2}>
-                          <CheckBox label={"123"}/>
+                        <Col xs={6} md={5}>
+                          <CheckBox label={"$123"} assignment={2}/>
                         </Col>
-                        <Col xs={6} md={2}>
-                          <CheckBox label={"234"}/>
-                        </Col>
-                        <Col xs={6} md={2}>
-                          <CheckBox label={"523"}/>
-                        </Col>
-
                       </Row>
 
                       <Row>
                         <Col xs={6} md={1}>
                           Silver Bracelet
                         </Col>
-                        <Col xs={6} md={2}>
-                          <CheckBox label={"123"}/>
+                        <Col xs={6} md={5}>
+                          <CheckBox label={"$123"} assignment={3}/>
                         </Col>
-                        <Col xs={6} md={2}>
-                          <CheckBox label={"234"}/>
-                        </Col>
-                        <Col xs={6} md={2}>
-                          <CheckBox label={"523"}/>
-                        </Col>
-                      
                       </Row>
 
                     </Grid>
                   </Col>
                 </Row>
+
+
+
 
                 <Row className="show-grid">
                   <Col xs={6} md={6}>
