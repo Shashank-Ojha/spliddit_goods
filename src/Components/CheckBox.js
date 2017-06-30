@@ -3,7 +3,6 @@ import FlatButton from 'material-ui/FlatButton';
 import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import './checkbox.css'
 
 class CheckBox extends Component {
   constructor(props) {
