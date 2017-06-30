@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import FlatButton from 'material-ui/FlatButton';
+import Col from 'react-bootstrap/lib/Col';
+import Row from 'react-bootstrap/lib/Row';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './checkbox.css'
 
 class CheckBox extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
-      activeButton: "NONE" // either Alice or Bob or Claire
+      activeButton: this.props.assignedTo, // either Alice or Bob or Claire
     };
   }
 
@@ -27,10 +29,12 @@ class CheckBox extends Component {
 
   ifAssigned(assignment, no){
     if (assignment === no) {
+      // return {display: "inline"}
       // return {backgroundColor: 'green'};
       return {border: '1px solid grey', width: '150'};
     }
-    return {width: '150'};
+    return {}
+    // return {display: "inline"};
   }
 
   render(){
@@ -39,10 +43,12 @@ class CheckBox extends Component {
     };
 
     return(
-      <div className="checkBox">
-        <MuiThemeProvider>
-          <div className="checkBox2">
-            <div style={this.ifAssigned(this.props.assignment, 1)}>
+          <Row>
+            <Col xs={6} md={1}>
+              {this.props.item}
+            </Col>
+            <Col xs={6} md={2} style={this.ifAssigned(this.props.assignment, 1)}>
+              <MuiThemeProvider>
               <FlatButton
                 backgroundColor={this.decideBGColor("Alice")}
                 hoverColor={this.decideBGColor("Alice")}
@@ -50,9 +56,11 @@ class CheckBox extends Component {
                 label={this.props.label}
                 style={style}
               />
-            </div>
+              </MuiThemeProvider>
+            </Col>
 
-            <div style={this.ifAssigned(this.props.assignment, 2)}>
+            <Col xs={6} md={2} style={this.ifAssigned(this.props.assignment, 2)}>
+              <MuiThemeProvider>
               <FlatButton
                 backgroundColor={this.decideBGColor("Bob")}
                 hoverColor={this.decideBGColor("Bob")}
@@ -60,20 +68,20 @@ class CheckBox extends Component {
                 label={this.props.label}
                 style={style}
               />
-            </div>
-
-            <div style={this.ifAssigned(this.props.assignment, 3)}>
-              <FlatButton
-                backgroundColor={this.decideBGColor("Claire")}
-                hoverColor={this.decideBGColor("Claire")}
-                onTouchTap={this.changeActiveState("Claire").bind(this)}
-                label={this.props.label}
-                style={style}
-              />
-            </div>
-          </div>
-        </MuiThemeProvider>
-      </div>
+              </MuiThemeProvider>
+            </Col>
+            <Col xs={6} md={2} style={this.ifAssigned(this.props.assignment, 3)}>
+              <MuiThemeProvider>
+                <FlatButton
+                  backgroundColor={this.decideBGColor("Claire")}
+                  hoverColor={this.decideBGColor("Claire")}
+                  onTouchTap={this.changeActiveState("Claire").bind(this)}
+                  label={this.props.label}
+                  style={style}
+                />
+              </MuiThemeProvider>
+            </Col>
+          </Row>
     );
   }
 }

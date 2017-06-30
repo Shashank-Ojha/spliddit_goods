@@ -24,8 +24,8 @@ class App extends Component {
                   </Col>
 
                   <Col xs={6} md={4}>
-                    <h3>Diamond Ring</h3>
-                    <h3>Gold Watch</h3>
+                    <h4>Diamond Ring</h4>
+                    <h4>Gold Watch</h4>
                   </Col>
                 </Row>
 
@@ -46,16 +46,14 @@ class App extends Component {
                 </Row>
 
                 <Row className="show-grid">
-                  <Col xs={12} md={6}>
+                  <Col xs={12} md={4}>
                     <h4>Fairness Properties</h4>
                     <p> See how it works </p>
                     <ButtonMenu />
                   </Col>
-                  <Col xs={6} md={6}>
+                  <Col xs={6} md={8}>
                     <h4>Results</h4>
                     <p> To adjust results, click on the preference buttons </p>
-
-
                     <Grid>
                       <Row>
                         <Col xs={6} md={1}>
@@ -71,66 +69,12 @@ class App extends Component {
                           Claire Preferences
                         </Col>
                       </Row>
-
-                      <hr/>
-
-
-                      <Row>
-                        <Col xs={6} md={1}>
-                          Gold Ring
-                        </Col>
-
-                        <Col xs={6} md={5}>
-                          <CheckBox label={"$123"} assignment={2}/>
-                        </Col>
-                      </Row>
-
-
-                      <Row>
-                        <Col xs={6} md={1}>
-                          Diamond Ring
-                        </Col>
-                        <Col xs={6} md={5}>
-                          <CheckBox label={"$123"} assignment={3}/>
-                        </Col>
-                      </Row>
-
-                      <Row>
-                        <Col xs={6} md={1}>
-                          Pearl Necklace
-                        </Col>
-                        <Col xs={6} md={5}>
-                          <CheckBox label={"$123"} assignment={1}/>
-                        </Col>
-                      </Row>
-
-                      <Row>
-                        <Col xs={6} md={1}>
-                          Ruby Earring
-                        </Col>
-                        <Col xs={6} md={5}>
-                          <CheckBox label={"$123"} assignment={2}/>
-                        </Col>
-                      </Row>
-
-                      <Row>
-                        <Col xs={6} md={1}>
-                          Gold Watch
-                        </Col>
-                        <Col xs={6} md={5}>
-                          <CheckBox label={"$123"} assignment={2}/>
-                        </Col>
-                      </Row>
-
-                      <Row>
-                        <Col xs={6} md={1}>
-                          Silver Bracelet
-                        </Col>
-                        <Col xs={6} md={5}>
-                          <CheckBox label={"$123"} assignment={3}/>
-                        </Col>
-                      </Row>
-
+                      <CheckBox item={"Gold Ring"} assignedTo={"Bob"} label={"$123"} assignment={2}/>
+                      <CheckBox item={"Diamond Ring"} assignedTo={"Claire"} label={"$123"} assignment={3}/>
+                      <CheckBox item={"Pearl Necklace"} assignedTo={"Claire"}label={"$123"} assignment={3}/>
+                      <CheckBox item={"Ruby Earring"} assignedTo={"Bob"} label={"$123"} assignment={2}/>
+                      <CheckBox item={"Gold Watch"} assignedTo={"Alice"} label={"$123"} assignment={1}/>
+                      <CheckBox item={"Silver Bracelet"} assignedTo={"Alice"} label={"$123"} assignment={1}/>
                     </Grid>
                   </Col>
                 </Row>
