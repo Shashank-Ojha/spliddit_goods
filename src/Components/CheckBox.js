@@ -4,23 +4,25 @@ import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+
 class CheckBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeButton: this.props.assignedTo, // either Alice or Bob or Claire
+      activeButton: this.props.assignedTo, // 0,1,2
     };
   }
 
-  changeActiveState(name){
+  changeActiveState(newAssignment){
     var changeActive = (function(event){
-      this.setState({activeButton: name});
+      this.setState({activeButton: newAssignment});
+      this.props.changeAssignedTo(this.props.rowNum, newAssignment);
     });
     return changeActive;
   }
 
-  decideBGColor(name){
-    if(name === this.state.activeButton){
+  decideBGColor(assignment){
+    if(assignment === this.state.activeButton){
       return "#a4c639";
     }
     return "";
@@ -28,12 +30,9 @@ class CheckBox extends Component {
 
   ifAssigned(assignment, no){
     if (assignment === no) {
-      // return {display: "inline"}
-      // return {backgroundColor: 'green'};
       return {border: '1px solid grey', width: '150'};
     }
     return {}
-    // return {display: "inline"};
   }
 
   render(){
@@ -46,36 +45,36 @@ class CheckBox extends Component {
             <Col xs={6} md={1}>
               {this.props.item}
             </Col>
-            <Col xs={6} md={2} style={this.ifAssigned(this.props.assignment, 1)}>
+            <Col xs={6} md={2} style={this.ifAssigned(this.props.assignedTo, 0)}>
               <MuiThemeProvider>
               <FlatButton
-                backgroundColor={this.decideBGColor("Alice")}
-                hoverColor={this.decideBGColor("Alice")}
-                onTouchTap={this.changeActiveState("Alice").bind(this)}
-                label={this.props.label}
+                backgroundColor={this.decideBGColor(0)}
+                hoverColor={this.decideBGColor(0)}
+                onTouchTap={this.changeActiveState(0).bind(this)}
+                label={this.props.label[0]}
                 style={style}
               />
               </MuiThemeProvider>
             </Col>
 
-            <Col xs={6} md={2} style={this.ifAssigned(this.props.assignment, 2)}>
+            <Col xs={6} md={2} style={this.ifAssigned(this.props.assignedTo, 1)}>
               <MuiThemeProvider>
               <FlatButton
-                backgroundColor={this.decideBGColor("Bob")}
-                hoverColor={this.decideBGColor("Bob")}
-                onTouchTap={this.changeActiveState("Bob").bind(this)}
-                label={this.props.label}
+                backgroundColor={this.decideBGColor(1)}
+                hoverColor={this.decideBGColor(1)}
+                onTouchTap={this.changeActiveState(1).bind(this)}
+                label={this.props.label[1]}
                 style={style}
               />
               </MuiThemeProvider>
             </Col>
-            <Col xs={6} md={2} style={this.ifAssigned(this.props.assignment, 3)}>
+            <Col xs={6} md={2} style={this.ifAssigned(this.props.assignedTo, 2)}>
               <MuiThemeProvider>
                 <FlatButton
-                  backgroundColor={this.decideBGColor("Claire")}
-                  hoverColor={this.decideBGColor("Claire")}
-                  onTouchTap={this.changeActiveState("Claire").bind(this)}
-                  label={this.props.label}
+                  backgroundColor={this.decideBGColor(2)}
+                  hoverColor={this.decideBGColor(2)}
+                  onTouchTap={this.changeActiveState(2).bind(this)}
+                  label={this.props.label[2]}
                   style={style}
                 />
               </MuiThemeProvider>

@@ -10,8 +10,52 @@ import './App.css';
 
 class App extends Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+
+      algoAssignment: [1,2,1,0],
+
+      sums: [0,0,0],
+
+      label: [[1,2,3],
+              [4,5,6],
+              [7,8,9],
+              [10,11,12]],
+
+      selectedM: [[0,1,0],
+                  [0,0,1],
+                  [0,1,0],
+                  [1,0,0]],
+      algoSum: [10,10,6],
+    };
+  }
+
   changeMessage(type){
     this.setState({displayedMessage: this.state.messages[type]});
+  }
+
+  changeAssignedTo(boxIdx, buttonIdx){
+    var i, j, colSum;
+    var newSum = [0,0,0];
+    var M = this.state.selectedM;
+    for (i=0; i<3; i++){
+      if (i === buttonIdx) {
+        M[boxIdx][i]=1;
+      }
+      else M[boxIdx][i]=0;
+    }
+
+    this.setState({selectedM:M});
+
+    for (j=0; j<3; j++){
+      colSum = 0;
+      for (i=0; i<this.state.selectedM.length; i++){
+        colSum = colSum + this.state.label[i][j] * this.state.selectedM[i][j];
+      }
+      newSum[j] = colSum;
+    }
+    this.setState({sums: newSum});
   }
 
   render() {
@@ -45,6 +89,7 @@ class App extends Component {
                   </Col>
                 </Row>
 
+
                 <Row className="show-grid">
                   <Col xs={12} md={4}>
                     <h4>Fairness Properties</h4>
@@ -54,7 +99,9 @@ class App extends Component {
                   <Col xs={6} md={8}>
                     <h4>Results</h4>
                     <p> To adjust results, click on the preference buttons </p>
+
                     <Grid>
+
                       <Row>
                         <Col xs={6} md={1}>
                           Items
@@ -69,16 +116,57 @@ class App extends Component {
                           Claire Preferences
                         </Col>
                       </Row>
-                      <CheckBox item={"Gold Ring"} assignedTo={"Bob"} label={"$123"} assignment={2}/>
-                      <CheckBox item={"Diamond Ring"} assignedTo={"Claire"} label={"$123"} assignment={3}/>
-                      <CheckBox item={"Pearl Necklace"} assignedTo={"Claire"}label={"$123"} assignment={3}/>
-                      <CheckBox item={"Ruby Earring"} assignedTo={"Bob"} label={"$123"} assignment={2}/>
-                      <CheckBox item={"Gold Watch"} assignedTo={"Alice"} label={"$123"} assignment={1}/>
-                      <CheckBox item={"Silver Bracelet"} assignedTo={"Alice"} label={"$123"} assignment={1}/>
+
+                      <CheckBox item={"Gold Ring"} assignedTo={this.state.algoAssignment[0]}
+                        label={this.state.label[0]}
+                        changeAssignedTo={this.changeAssignedTo.bind(this)} rowNum = {0}/>
+
+                      <CheckBox item={"Diamond Ring"} assignedTo={this.state.algoAssignment[1]}
+                        label={this.state.label[1]}
+                        changeAssignedTo={this.changeAssignedTo.bind(this)} rowNum = {1}/>
+
+                      <CheckBox item={"Ruby Earring"} assignedTo={this.state.algoAssignment[2]}
+                        label={this.state.label[2]}
+                        changeAssignedTo={this.changeAssignedTo.bind(this)} rowNum = {2}/>
+
+                      <CheckBox item={"Gold Watch"} assignedTo={this.state.algoAssignment[3]}
+                        label={this.state.label[3]}
+                        changeAssignedTo={this.changeAssignedTo.bind(this)} rowNum = {3}/>
+
+                      <Row>
+                        <Col xs={6} md={1}>
+                          Algorithm Sum
+                        </Col>
+                        <Col xs={6} md={2}>
+                          {this.state.algoSum[0]}
+                        </Col>
+                        <Col xs={6} md={2}>
+                          {this.state.algoSum[1]}
+                        </Col>
+                          <Col xs={6} md={2}>
+                          {this.state.algoSum[2]}
+                        </Col>
+                      </Row>
+
+                      <Row>
+                        <Col xs={6} md={1}>
+                          Your Sum
+                        </Col>
+                        <Col xs={6} md={2}>
+                          {this.state.sums[0]}
+                        </Col>
+                        <Col xs={6} md={2}>
+                          {this.state.sums[1]}
+                        </Col>
+                          <Col xs={6} md={2}>
+                          {this.state.sums[2]}
+                        </Col>
+                      </Row>
+
+
                     </Grid>
                   </Col>
                 </Row>
-
 
 
 
@@ -115,7 +203,6 @@ class App extends Component {
                   <Col xs={6} md={5}>
                   </Col>
                 </Row>
-
 
           </Grid>
       </div>
