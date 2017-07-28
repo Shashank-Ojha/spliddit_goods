@@ -4,22 +4,6 @@ import Row from 'react-bootstrap/lib/Row';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import CheckBoxRow from './CheckBox';
 
-// <CheckBox item={"Gold Ring"} assignedTo={this.state.algoAssignment[0]}
-//   label={this.state.label[0]}
-//   changeAssignedTo={this.changeAssignedTo.bind(this)} rowNum = {0}/>
-//
-// <CheckBox item={"Diamond Ring"} assignedTo={this.state.algoAssignment[1]}
-//   label={this.state.label[1]}
-//   changeAssignedTo={this.changeAssignedTo.bind(this)} rowNum = {1}/>
-//
-// <CheckBox item={"Ruby Earring"} assignedTo={this.state.algoAssignment[2]}
-//   label={this.state.label[2]}
-//   changeAssignedTo={this.changeAssignedTo.bind(this)} rowNum = {2}/>
-//
-// <CheckBox item={"Gold Watch"} assignedTo={this.state.algoAssignment[3]}
-//   label={this.state.label[3]}
-//   changeAssignedTo={this.changeAssignedTo.bind(this)} rowNum = {3}/>
-
 class ViewResult extends Component {
   constructor(props) {
     super(props);
@@ -55,9 +39,60 @@ class ViewResult extends Component {
       goodGrid = this.props.goods.map(makeRow.bind(this));
     }
 
+
+
+    let nameRow;
+    var column=<Col xs={6} md={2}>item</Col>;
+    var makeCol = function(name, idx){
+      var x=name+" preference";
+      return (
+        <Col xs={6} md={2} key={idx}>{x}</Col>
+      )
+    }
+    if(this.props.names){
+      nameRow = <Row>{[column].concat(this.props.names.map(makeCol.bind(this)))}</Row>;
+    }
+
+    let algoSumRow;
+    var column=<Col xs={6} md={2}>Algorithm Sum</Col>;
+    var makeCol = function(name, idx){
+      var x=this.props.algoSum[idx];
+      return (
+        <Col xs={6} md={2} key={idx}>
+          <p className="text-center">
+            {x}
+          </p>
+        </Col>
+      )
+    }
+    if(this.props.names){
+      algoSumRow = <Row>{[column].concat(this.props.algoSum.map(makeCol.bind(this)))}</Row>;
+    }
+
+    let yourSumRow;
+    var column=<Col xs={6} md={2}>Your Sum</Col>;
+    var makeCol = function(name, idx){
+      var x=this.props.sum[idx];
+      return (
+        <Col xs={6} md={2} key={idx}>
+          <p className="text-center">
+            {x}
+          </p>
+        </Col>
+      )
+    }
+    if(this.props.names){
+      yourSumRow = <Row>{[column].concat(this.props.sum.map(makeCol.bind(this)))}</Row>;
+    }
+
     return(
       <div className="goodGrid">
+          {nameRow}
           {goodGrid}
+          {algoSumRow}
+          <br/>
+          {yourSumRow}
+
       </div>
     );
   }

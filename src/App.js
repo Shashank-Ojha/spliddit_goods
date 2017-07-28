@@ -5,45 +5,40 @@ import Col from 'react-bootstrap/lib/Col';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import ButtonMenu from './Components/ButtonMenu';
 import ViewResult from './Components/ViewResult';
-//import CheckBox from './Components/CheckBox';
 injectTapEventPlugin();
 import './App.css';
 
 class App extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      people: ["Alice", "Bob", "Claire","David"],
-      goods: ["Gold Ring","Diamond Ring","Ruby Earring","Gold Watch"],
-      algoAssignment: [1,2,3,0], // indices of the names
-      currentAssignment: [1,2,3,0], // to keep track of the final result, each index corresponds to a good
-      selectedM: [[0,1,0,0], // matrix grid version of currentAssignment
-                  [0,0,1,0], // also needs to be initialized in init?
-                  [0,0,0,1],
-                  [1,0,0,0]],
+      people: ["Alice", "Bob", "Claire","David","Ellen"],
+      goods: ["Gold Ring","Diamond Ring","Ruby Earring","Gold Watch","Earring"],
+      algoAssignment: [1,2,3,0,4], // indices of the names
+      currentAssignment: [1,2,3,0,4], // to keep track of the final result, each index corresponds to a good
+      selectedM: [[0,1,0,0,0], // matrix grid version of currentAssignment
+                  [0,0,1,0,0], // also needs to be initialized in init?
+                  [0,0,0,1,0],
+                  [1,0,0,0,0],
+                  [0,0,0,0,1]],
 
       messages: {"Utilitarian":"Message 1", "Utility":"Message 2",
                  "Maximin":"Message 3"    , "Envy-Freeness":"Message 4"},
       displayedMessage: "Message 1",
       totalPoint: 1000,
 
-      sums: [0,0,0,0], // need some init function? called only once when the page reloads
+      sums: [0,0,0,0,0], // need some init function? called only once when the page reloads
 
-      label: [[1,2,3,4], // the points allocated
-              [4,5,6,7],
-              [7,8,9,10],
-              [10,11,12,13]],
+      label: [[100,2,3,4,1], // the points allocated
+              [4,5,6,7,1],
+              [7,8,9,10,1],
+              [10,11,12,13,1],
+              [10,10,10,10,10]],
 
-      algoSum: [10,2,6,10], // need to be initialized in init
+      algoSum: [10,2,6,10,1], // need to be initialized in init
     };
   }
-
-  // init(){
-  //   this.setState({sums: new Array(this.state.people.length)});
-  //   // selectedM, algoSum, and other initializations
-  //
-  // }
 
   changeMessage(type){
     this.setState({displayedMessage: this.state.messages[type]});
@@ -59,7 +54,7 @@ class App extends Component {
   // this function is passed into the grid (ViewResult) so that the state can be updated based when the buttons are clicked
   changeAssignedTo(rowNum, newAssignment){
     var i, j, colSum;
-    var newSum = [0,0,0,0];
+    var newSum = [0,0,0,0,0];
     var M = this.state.selectedM;
 
     // update the particular row where the assignment is being changed
@@ -84,161 +79,72 @@ class App extends Component {
 
 
   render() {
+
+    const style = {
+          marginTop: 12,
+          marginBottom: 12,
+        };
+
     return (
       <div className="App">
-      <Grid>
-                <Row className="show-grid">
-                  <Col xs={12} md={8}>
-                    <h1>Explore Your Results</h1>
-                  </Col>
+              <Grid>
 
-                  <Col xs={6} md={4}>
-                    <h4>Diamond Ring</h4>
-                    <h4>Gold Watch</h4>
-                  </Col>
-                </Row>
+                  <Row className="show-grid">
+                    <Col xs={12} md={8}>
+                      <h1 id="#title"> Overview </h1>
+                    </Col>
+                  </Row>
 
-                <hr />
+                  <hr className="hr-thick" />
 
-                <Row className="show-grid">
-                  <Col xs={12} md={6}>
-                    <h4>Division Algorithms for Goods</h4>
-                    <p> The rent calculator helps roomates to fairly share rent
-                    when moving into a new house or apartment. This is
-                    especially useful when bedrooms differ in size, closet
-                    space, bathrooms, and more. </p>
-                  </Col>
-                  <Col xs={6} md={2}>
-                  </Col>
-                  <Col xs={6} md={4}>
-                  </Col>
-                </Row>
+                  <Row className="show-grid">
+                    <Col id="left" xs={12} md={4}>
+                      <div id="introduction">
+                        <h3> Introduction </h3>
+                        <hr className="hr-thin"/>
+                        <p> <strong> This page conveys the force behind Spliddit’s algorithm </strong>by explaining its assumptions, providing a place to view each participant’s preferences and results, and an interactive area where each individual can simulate/ alter the algorithm results with the other group members for discussion</p>
+                      </div>
+                      <div id="properties">
+                        <h3> Fairness Properties </h3>
+                        <hr className="hr-thin"/>
+                        <p> <strong> Spliddit finds a room assignment and rent price</strong> in which you are assigned a room for a cheaper price than what you are willing to pay. We call this price difference savings.
+                        </p>
+                      </div>
+                    </Col>
+                    <Col id="right" xs={6} md={8}>
+                     <div id="changesInfo">
+                      <h3> Interactive Changes </h3>
+                      <hr className="hr-thin width-sm"/>
+                      <p> The colored buttons show each individual task with the burden associated with each task.  Click on buttons to reassign task to reveal changes to each person’s burden load index.  As long as the number of tasks are filled, you can change the assignments!
+                      </p>
+                      <div id="suggestions">
+                        <h4> Some Suggestions </h4>
+                      </div>
+                      <br/>
+                     </div>
+                     <div>
 
+                     <br/>
+                     <br/>
+                       <ViewResult
+                         names={this.state.people}
+                         goods={this.state.goods} // for each good, call CheckBox
+                         algoAssignment={this.state.algoAssignment}
+                         assignments={this.state.selectedM} // just the matrix version of the algoAssignment
+                         label={this.state.label} //allocated points
+                         changeAssignedTo={this.changeAssignedTo.bind(this)}
+                         algoSum={this.state.algoSum}
+                         sum={this.state.sums}
+                       />
 
-                <Row className="show-grid">
-                  <Col xs={12} md={4}>
-                    <h4>Fairness Properties</h4>
-                    <p> See how it works </p>
-                    <ButtonMenu />
-                  </Col>
-                  <Col xs={6} md={8}>
-                    <h4>Results</h4>
-                    <p> To adjust results, click on the preference buttons </p>
-
-                    <Grid>
-
-                      <Row>
-                        <Col xs={6} md={1}>
-                          Items
-                        </Col>
-                        <Col xs={6} md={2}>
-                          Alices Preferences
-                        </Col>
-                        <Col xs={6} md={2}>
-                          Bob Preferences
-                        </Col>
-                        <Col xs={6} md={2}>
-                          Claire Preferences
-                        </Col>
-                        <Col xs={6} md={2}>
-                          David Preferences
-                        </Col>
-                      </Row>
-
-                      <ViewResult
-                        names={this.state.people}
-                        goods={this.state.goods} // for each good, call CheckBox
-                        algoAssignment={this.state.algoAssignment}
-                        assignments={this.state.selectedM} // just the matrix version of the algoAssignment
-                        label={this.state.label} //allocated points
-                        changeAssignedTo={this.changeAssignedTo.bind(this)}
-                      />
-
-
-
-                      // need to change this!!!!!!
-                      <Row>
-                        <Col xs={6} md={1}>
-                          Algorithm Sum
-                        </Col>
-                        <Col xs={6} md={2}>
-                          {this.state.algoSum[0]}
-                        </Col>
-                        <Col xs={6} md={2}>
-                          {this.state.algoSum[1]}
-                        </Col>
-                        <Col xs={6} md={2}>
-                          {this.state.algoSum[2]}
-                        </Col>
-                        <Col xs={6} md={2}>
-                          {this.state.algoSum[3]}
-                        </Col>
-                      </Row>
-
-                      <Row>
-                        <Col xs={6} md={1}>
-                          Your Sum
-                        </Col>
-                        <Col xs={6} md={2}>
-                          {this.state.sums[0]}
-                        </Col>
-                        <Col xs={6} md={2}>
-                          {this.state.sums[1]}
-                        </Col>
-                        <Col xs={6} md={2}>
-                          {this.state.sums[2]}
-                        </Col>
-                        <Col xs={6} md={2}>
-                          {this.state.sums[3]}
-                        </Col>
-                      </Row>
-
-
-                    </Grid>
-                  </Col>
-                </Row>
-
-
-
-                <Row className="show-grid">
-                  <Col xs={6} md={6}>
-                    <h1>Expanded View</h1>
-                    <p>Some Text</p>
-                  </Col>
-
-                  <Col xs={6} md={6}>
-                  </Col>
-                </Row>
-
-                <br/>
-
-                <Row className="show-grid">
-                  <Col xs={6} md={2}>
-                  </Col>
-
-                  <Col xs={6} md={5}>
-                  </Col>
-
-                  <Col xs={6} md={5}>
-                  </Col>
-                </Row>
-
-                <Row className="show-grid">
-                  <Col xs={6} md={2}>
-                  </Col>
-
-                  <Col xs={6} md={5}>
-                  </Col>
-
-                  <Col xs={6} md={5}>
-                  </Col>
-                </Row>
-
-          </Grid>
+                     </div>
+                     <br/>
+                    </Col>
+                  </Row>
+              </Grid>
       </div>
     );
   }
 }
-
 
 export default App;
